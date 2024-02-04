@@ -1,0 +1,24 @@
+{
+    "vscode_path" : "\"C:\\Program Files\\Microsoft VS Code/Code.exe\"",
+
+    "envs" : [
+        {
+            "name":"c",
+            "ext_path":"\"D:\\A\\VS Code Config\\c\\extensions\"",
+            "dat_path":"\"D:\\A\\VS Code Config\\c\\user_data\"",
+            "ico_path":"NULL"
+        },
+        {
+            "name":"python",
+            "ext_path":"\"D:\\A\\VS Code Config\\python\\extensions\"",
+            "dat_path":"\"D:\\A\\VS Code Config\\python\\user_data\"",
+            "ico_path":"NULL"
+        },
+        {
+            "name":"verilog",
+            "ext_path":"\"D:\\A\\VS Code Config\\verilog\\extensions\"",
+            "dat_path":"\"D:\\A\\VS Code Config\\verilog\\user_data\"",
+            "ico_path":"NULL"
+        }
+    ]
+}
