@@ -19,13 +19,13 @@ INCLUDE_DIRS = \
 	-Ilib/cJSON
 
 SOURCES = \
-	test.c \
-	main.c \
-	json.c \
-	command_run.c \
-	command_info.c \
-	command_clean.c \
-	command_create.c \
+	src/test.c \
+	src/main.c \
+	src/json.c \
+	src/command_run.c \
+	src/command_info.c \
+	src/command_clean.c \
+	src/command_create.c \
 	lib/cJSON/cJSON.c 
 
 

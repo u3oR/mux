@@ -10,7 +10,7 @@
 #include <getopt.h>
 
 #include "main.h"
-#include "lib/cJSON/cJSON.h"
+#include "cJSON.h"
 #include "json.h"
 
 
