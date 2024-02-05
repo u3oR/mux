@@ -27,6 +27,7 @@
  **************************************/
 
 const char *FAULT_S = "FAULT";
+const char *NOTE_S = "3oR";
 
 const char *DEFAULT_CONFIG_FILE = "_settings.json";
 
@@ -53,7 +54,7 @@ struct {
 
 cJSON *setting_json = NULL;
 
-const char *MAIN_HELP_CONTENT = "This is a help\n";
+const char *MAIN_HELP_CONTENT = "This is main help\n";
 
 static struct option MAIN_OPTION_TABLE[] = {
 	{"help", 		no_argument, 		NULL,	'h'},

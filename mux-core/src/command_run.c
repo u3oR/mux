@@ -70,6 +70,8 @@ int run_main(int argc, char const *argv[])
    	// init run param
 	union Run run_param = {NULL};
 
+	struct Env *env = NULL;
+
 	int opt_code = 0;
 	int opt_index = 0;
 
@@ -115,8 +117,7 @@ int run_main(int argc, char const *argv[])
 		goto finished;
 	}
 
-	struct Env *env = 
-		json_get_env(setting_json, run_param.env_name);
+	env = json_get_env(setting_json, run_param.env_name);
 	if(env == NULL){
 		goto finished;
 	}
@@ -136,11 +137,12 @@ int run_main(int argc, char const *argv[])
 	// run command
 	char buf[1024];
 
-	printf("code %s --extensions-dir %s --user-data-dir %s",
+	sprintf(buf, "code %s --extensions-dir %s --user-data-dir %s",
 			run_param.prj_path,
 			run_param.ext_data,
 			run_param.dat_data);
 
+	printf(buf);
 	system(buf);
 
 finished :

@@ -24,6 +24,7 @@
  * 全局变量
  **************************************/
 extern const char *FAULT_S;
+extern const char *NOTE_S;
 
 extern const char *DEFAULT_CONFIG_FILE;
 
