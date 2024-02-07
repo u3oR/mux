@@ -9,7 +9,8 @@
 #include <stdbool.h>
 #include <getopt.h>
 
-
+#include "main.h"
+#include "json.h"
 /**************************************
  * 宏定义
  **************************************/
@@ -31,7 +32,7 @@ static struct option INFO_OPTION_TABLE[] = {
 	{0,				0, 					0,		 0 }
 };
 
-static char *INFO_OPTION_STRING = "he";
+static char *INFO_OPTION_STRING = "he:";
 
 /**************************************
  * 私有函数 / 宏函数
@@ -68,8 +69,8 @@ int info_main(int argc, char const *argv[])
 				goto finished;
 				break;
 			case 'e':
-                printf("{mamba, mamba}\n");
-                printf("{pyocd, pyocd}\n");
+				json_print_envs(setting_json, optarg);
+				goto finished;
 				break;
 			default:
 				break;

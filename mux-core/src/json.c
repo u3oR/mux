@@ -69,13 +69,26 @@ file_read(const char *filepath)
     return message;
 }
 
+static int  
+json_get_envs_size(cJSON* json_object)
+{
+    cJSON * env_array_obj = cJSON_GetObjectItem(json_object, "envs");
+
+    if(env_array_obj == NULL) {
+        return 0;
+    }
+
+    int arr_size = cJSON_GetArraySize(env_array_obj);
+
+    return arr_size;
+}
 
 
 /**************************************
  * 函数定义
  **************************************/
 
-cJSON *
+cJSON * 
 json_parse_file(const char *filepath)
 {
     char *file_buf = file_read(filepath);
@@ -142,6 +155,65 @@ json_get_env(cJSON* json_object, const char* env_name)
     return env;
 }
 
+int json_print_envs(cJSON *json_object, const char *env_name)
+{
+    int ret = 0;
+    struct Env *env = (struct Env *)malloc(sizeof(struct Env));
+
+    if (env == NULL) {
+        ret = -1;
+        goto finished;
+    }
+
+    cJSON * env_array_obj = cJSON_GetObjectItem(json_object, "envs");
+
+    if(env_array_obj == NULL) {
+        ret = -1;
+        goto finished;
+    }
+
+    int arr_size = cJSON_GetArraySize(env_array_obj);
+
+    for (int i = 0; i < arr_size; i++)
+    {
+        cJSON *env_obj = cJSON_GetArrayItem(env_array_obj, i);
+
+        cJSON *obj_item = NULL;
+
+        obj_item = cJSON_GetObjectItem(env_obj, "name");
+        env->name = cJSON_GetStringValue(obj_item);
+
+        obj_item = cJSON_GetObjectItem(env_obj, "ext_path");
+        env->ext_path = cJSON_GetStringValue(obj_item);
+
+        obj_item = cJSON_GetObjectItem(env_obj, "dat_path");
+        env->dat_path = cJSON_GetStringValue(obj_item);
+        
+        obj_item = cJSON_GetObjectItem(env_obj, "ico_path");
+        env->ico_path = cJSON_GetStringValue(obj_item);
+
+        #define private_env_print() \
+                printf("env_name:%s\n\t ext_path:%s\n\t dat_path:%s\n\t ico_path:%s\n", \
+                    env->name, env->ext_path, env->dat_path, env->ico_path);
+    
+        if (is_str_same(env_name, "all"))
+        {
+            private_env_print();
+        }else if(is_str_same(env_name, env->name)) {
+            private_env_print();
+            break;
+        }
+
+        #undef private_env_print
+    }
+
+finished:
+    if (env != NULL) {
+        free(env);
+    }
+
+    return ret;
+}
 
 char const * 
 json_get_vsc(cJSON* json_object)
@@ -165,8 +237,6 @@ json_set_vsc(cJSON* json_object, const char* vsc_path)
 {
     UNUSED(vsc_path);
     UNUSED(json_object);
-
-    // cJSON *obj = cJSON_CreateObject();
     
     return 0;
 }

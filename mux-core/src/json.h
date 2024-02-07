@@ -40,8 +40,11 @@ json_parse_file(const char* file_path);
 char const * 
 json_get_vsc(cJSON* json_object);
 
-struct Env * 
+struct Env *
 json_get_env(cJSON* json_object, const char* env_name);
+
+int 
+json_print_envs(cJSON *json_object, const char *env_name);
 
 int 
 json_set_vsc(cJSON* json_object, const char* vsc_path);
