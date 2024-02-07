@@ -9,7 +9,8 @@
 #include <stdbool.h>
 #include <getopt.h>
 
-
+#include "main.h"
+#include "json.h"
 /**************************************
  * 宏定义
  **************************************/
@@ -67,9 +68,8 @@ int clean_main(int argc, char const *argv[])
                 print_clean_help();
 				goto finished;
 			case 'e':
-                printf("This is info envs\n");
-                printf("{mamba, mamba}\n");
-                printf("{pyocd, pyocd}\n");
+                json_del_env(setting_json, optarg);
+				json_print_env(setting_json, "all");
 				break;
 			default:
 				break;

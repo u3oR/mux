@@ -263,11 +263,9 @@ int json_del_env(cJSON *json_root, const char *del_env_name)
 
     int arr_size = cJSON_GetArraySize(env_array_obj);
 
-    cJSON *env_obj = NULL;
-
     for (int i = 0; i < arr_size; i++)
     {
-        env_obj = cJSON_GetArrayItem(env_array_obj, i);
+        cJSON *env_obj = cJSON_GetArrayItem(env_array_obj, i);
 
         cJSON *env_name_obj = cJSON_GetObjectItem(env_obj, "name");
 
@@ -279,17 +277,8 @@ int json_del_env(cJSON *json_root, const char *del_env_name)
             break;
         }
     }
-}
-
-int 
-json_del_env(cJSON* json_object, struct Env *env)
-{
-    UNUSED(env);
-    UNUSED(json_object);
-
     return 0;
 }
-
 
 
 int 
@@ -300,12 +289,16 @@ json_save_to_file(cJSON* json_object, const char* file_path)
         return -1;
     }
     
-    char *json_txt = cJSON_PrintBuffered(json_object, 2048, cJSON_True);
+    char *json_txt = cJSON_Print(json_object);
+    
+    // char *json_txt = cJSON_PrintBuffered(json_object, 2048, 1);
     if (json_txt == NULL) {
         return -1;
     }
     
     fwrite(json_txt, sizeof(char), sizeof(json_txt), fp);
+
+    free(json_txt);
 
     fclose(fp);
 
