@@ -27,11 +27,11 @@ const char *CLEAN_HELP_CONTENT = "This is a info help";
 
 static struct option CLEAN_OPTION_TABLE[] = {
 	{"help", 		no_argument, 		NULL,	'h'},
-	{"envs",		no_argument,	    NULL,	'e'},
+	{"env",			required_argument,  NULL,	'e'},
 	{0,				0, 					0,		 0 }
 };
 
-static char *CLEAN_OPTION_STRING = "he";
+static char *CLEAN_OPTION_STRING = "he:";
 
 /**************************************
  * 私有函数 / 宏函数

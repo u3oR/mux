@@ -28,7 +28,7 @@ const char *INFO_HELP_CONTENT = "This is a info help";
 
 static struct option INFO_OPTION_TABLE[] = {
 	{"help", 		no_argument, 		NULL,	'h'},
-	{"envs",		no_argument,	    NULL,	'e'},
+	{"env",			no_argument,	    NULL,	'e'},
 	{0,				0, 					0,		 0 }
 };
 
