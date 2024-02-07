@@ -53,7 +53,7 @@ int
 json_add_env(cJSON* json_object, struct Env *env);
 
 int 
-json_del_env(cJSON* json_object, struct Env *env);
+json_del_env(cJSON *json_root, const char *del_env_name);
 
 int 
 json_save_to_file(cJSON* json_object, const char* file_path);
