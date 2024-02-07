@@ -44,7 +44,7 @@ struct Env *
 json_get_env(cJSON* json_object, const char* env_name);
 
 int 
-json_print_envs(cJSON *json_object, const char *env_name);
+json_print_env(cJSON *json_object, const char *env_name);
 
 int 
 json_set_vsc(cJSON* json_object, const char* vsc_path);

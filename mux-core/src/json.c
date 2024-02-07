@@ -155,9 +155,15 @@ json_get_env(cJSON* json_object, const char* env_name)
     return env;
 }
 
-int json_print_envs(cJSON *json_object, const char *env_name)
+int json_print_env(cJSON *json_object, const char *env_name)
 {
     int ret = 0;
+    
+    if(env_name == NULL){
+        ret = -1;
+        goto finished;
+    }
+
     struct Env *env = (struct Env *)malloc(sizeof(struct Env));
 
     if (env == NULL) {

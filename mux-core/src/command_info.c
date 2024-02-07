@@ -69,7 +69,7 @@ int info_main(int argc, char const *argv[])
 				goto finished;
 				break;
 			case 'e':
-				json_print_envs(setting_json, optarg);
+				json_print_env(setting_json, optarg);
 				goto finished;
 				break;
 			default:
