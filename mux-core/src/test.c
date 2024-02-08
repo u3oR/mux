@@ -1,11 +1,12 @@
 
-#ifdef MUX_TEST
+
 
 #include <stdio.h>
 #include <string.h>
 #include "cJSON.h"
 #include "json.h"
 
+#ifdef MUX_TEST
 
 int main(int argc, char const *argv[])
 {

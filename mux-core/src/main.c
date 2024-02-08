@@ -93,6 +93,7 @@ enum COMMAND_ID get_command_id(const char *cmd_name)
  * 程序入口
  ******************************************************/
 #ifdef MUX_MAIN
+
 int main(int argc, char const *argv[])
 {
 	/* 无参数 打印帮助信息 */
