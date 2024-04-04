@@ -38,14 +38,13 @@ BUILD_FLAG := MUX_MAIN
 
 CFLAGS  = $(INCLUDE_DIRS) -Wall -Wextra -g -D$(BUILD_FLAG)
 
-# LDFLAGS = 
+#LDFLAGS =
 
 
 vpath %.c $(sort $(dir $(SOURCES)))
 
 # list of objects
 OBJECTS  =  $(addprefix $(BUILD_DIR)/,$(notdir $(SOURCES:.c=.o)))
-
 
 $(BUILD_DIR)/%.o: %.c   Makefile | $(BUILD_DIR) 
 	$(CC) -c $(CFLAGS)  $< -o $@
